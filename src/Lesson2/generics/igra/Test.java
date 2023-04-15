@@ -1,4 +1,4 @@
-package generic.igra;
+package Lesson2.generics.igra;
 
 public class Test {
     public static void main(String[] args) {

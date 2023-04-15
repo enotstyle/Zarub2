@@ -1,4 +1,4 @@
-package generic.igra;
+package Lesson2.generics.igra;
 
 public class Employee extends Participant {
     public Employee(String name, int age) {

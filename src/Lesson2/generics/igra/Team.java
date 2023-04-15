@@ -1,4 +1,4 @@
-package generic.igra;
+package Lesson2.generics.igra;
 
 import java.util.ArrayList;
 import java.util.List;

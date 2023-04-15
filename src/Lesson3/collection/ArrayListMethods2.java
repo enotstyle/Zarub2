@@ -1,6 +1,7 @@
 package Lesson3.collection;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class ArrayListMethods2 {
@@ -23,7 +24,6 @@ public class ArrayListMethods2 {
         studentList.add(st6);
         studentList.remove(st6);
         System.out.println(studentList);
-
     }
 }
 
@@ -60,5 +60,5 @@ class Student {
         Student student = (Student) o;
         return sex == student.sex && age == student.age && course == student.course && Double.compare(student.abgGrade, abgGrade) == 0 && Objects.equals(name, student.name);
     }
-    
+
 }

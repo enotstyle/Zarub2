@@ -1,4 +1,4 @@
-package generic.igra;
+package Lesson2.generics.igra;
 
 public class Schoolar extends Participant {
 

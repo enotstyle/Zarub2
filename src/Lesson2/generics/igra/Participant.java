@@ -1,4 +1,4 @@
-package generic.igra;
+package Lesson2.generics.igra;
 
 public abstract class Participant {
     private String name;
