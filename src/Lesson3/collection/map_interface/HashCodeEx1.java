@@ -1,8 +1,6 @@
 package Lesson3.collection.map_interface;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class HashCodeEx1 {
     public static void main(String[] args) {
@@ -26,10 +24,54 @@ public class HashCodeEx1 {
         Integer i = 5;
         System.out.println(Objects.hash(i));
 
+        for (Map.Entry<Student,Double> entry: map.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        Collection<Double> col = map.values();
+        System.out.println(col);
+
+        Set<Map.Entry<Student,Double>> set = map.entrySet();
+        System.out.println(set + "!!!!!!!!");
+
+
+
+        for (Map.Entry<Student,Double> s: set) {
+            System.out.println(s.getKey());
+            System.out.println(s.getValue());
+        }
+
+        System.out.println("xxxxxxxxxxxxxxxxxxx");
+
+        Map<Integer, String > map3 = new HashMap<>();
+        map3.put(1, "Ivan");
+        map3.put(2, "Daria");
+        map3.put(3, "Zaur");
+        map3.put(4, "Pavel");
+
+        Set<Integer> set3 = map3.keySet();
+        System.out.println(set3);
+
+        Collection<String> col3 = map3.values();
+        System.out.println(col3);
+
+        Set<Map.Entry<Integer, String>> entrySet3 = map3.entrySet();
+        System.out.println(entrySet3);
+        for (Map.Entry<Integer, String> s: entrySet3) {
+            System.out.println(s.getValue());
+        }
+
+        Map<Integer, String> map2 = new HashMap<>(16, 0.75f);
+
+
+
+
+
+
     }
 }
 
-class Student {
+class Student implements Comparable<Student>{
     String name;
     String surname;
     int course;
@@ -65,5 +107,11 @@ class Student {
                 ", surname='" + surname + '\'' +
                 ", course=" + course +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Student o) {
+        return this.name.compareTo(o.name);
     }
 }
