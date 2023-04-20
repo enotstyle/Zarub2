@@ -25,6 +25,7 @@ public class AnonymousClass {
 
         Math2 m3 = new Math2() {
             int i = 3;
+
             @Override
             public int operation(int a, int b) {
                 return a * b;
@@ -46,6 +47,8 @@ interface Math {
 
 class Math2 {
     int operation(int a, int b) {
-        return a/b;
-    };
+        return a / b;
+    }
+
+    ;
 }
