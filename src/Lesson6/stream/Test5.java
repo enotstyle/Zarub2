@@ -1,11 +1,16 @@
-package Lesson6.Stream;
+package Lesson6.stream;
 
 import java.util.Arrays;
 
 public class Test5 {
     public static void main(String[] args) {
-        int[] array = {3, 9, 1, 5, 2, 5, 4536, 66, 77, 44};
-        array = Arrays.stream(array).sorted().toArray();
-        System.out.println(Arrays.toString(array));
+        int[] array = {3, 4, 7, 5, 6, 8, 99, 22, 33, 44, 22, 3, 12};
+        int result = Arrays.stream(array).filter(e -> e % 2 == 1).map(e -> {
+            if (e % 3 == 0) {
+                e = e / 3;
+            }
+            return e;
+        }).reduce((accumulator, element) -> accumulator + element).getAsInt();
+        System.out.println(result);
     }
 }

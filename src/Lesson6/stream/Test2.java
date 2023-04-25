@@ -1,4 +1,4 @@
-package Lesson6.Stream;
+package Lesson6.stream;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,27 +8,30 @@ import java.util.stream.Stream;
 
 public class Test2 {
     public static void main(String[] args) {
-        Student st1 = new Student("Ivan", 'm', 22, 3, 8.3);
-        Student st2 = new Student("Nikolay", 'm', 28, 2, 6.4);
-        Student st3 = new Student("Elena", 'f', 19, 1, 8.9);
-        Student st4 = new Student("Petr", 'm', 35, 4, 7);
-        Student st5 = new Student("Mariya", 'f', 23, 3, 9.1);
-        List<Student> students = new ArrayList<>();
-        students.add(st1);
-        students.add(st2);
-        students.add(st3);
-        students.add(st4);
-        students.add(st5);
-        System.out.println(students);
+        Student st1 = new Student("Ivan", 28, 'm', 3, 8.8);
+        Student st2 = new Student("Petr", 18, 'm', 2, 2.8);
+        Student st3 = new Student("Karl", 19, 'm', 1, 1.8);
+        Student st4 = new Student("Lena", 22, 'f', 2, 3.8);
+        Student st5 = new Student("Mike", 20, 'm', 4, 4.8);
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(st1);
+        studentList.add(st2);
+        studentList.add(st3);
+        studentList.add(st4);
+        studentList.add(st5);
 
-        students = students.stream().filter(student
-                -> student.getAge() > 20 && student.getAvgGrade() > 7.2).collect(Collectors.toList());
-        System.out.println(students);
+        studentList.stream().map(element -> {
+            element.getName().toUpperCase();
+            return element;
+        }).filter(element -> element.getSex() == 'm').sorted((x, y) -> x.getAge() - y.getAge()).forEach(System.out::println);
 
-        Stream<Student> myStream = Stream.of(st1, st2, st3, st4);
 
-        students = students.stream().sorted((x,y) -> x.getName().compareTo(y.getName())).collect(Collectors.toList());
-        System.out.println(students);
+        Stream<Integer> stream2 = Stream.of(1, 2, 3, 4, 5, 1, 2);
+//        stream2.distinct().forEach(e -> System.out.println(e));
+
+//        System.out.println(stream2.count());
+//        System.out.println(stream2.distinct().count());
+        System.out.println(stream2.distinct().peek(System.out::println).count());
 
     }
 
@@ -36,15 +39,15 @@ public class Test2 {
 
 class Student {
     private String name;
-    private char sex;
     private int age;
     private int course;
+    private char sex;
     private double avgGrade;
 
-    public Student(String name, char sex, int age, int course, double avgGrade) {
+    public Student(String name, int age, char sex, int course, double avgGrade) {
         this.name = name;
-        this.sex = sex;
         this.age = age;
+        this.sex = sex;
         this.course = course;
         this.avgGrade = avgGrade;
     }
@@ -55,14 +58,6 @@ class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public char getSex() {
-        return sex;
-    }
-
-    public void setSex(char sex) {
-        this.sex = sex;
     }
 
     public int getAge() {
@@ -89,13 +84,21 @@ class Student {
         this.avgGrade = avgGrade;
     }
 
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", sex=" + sex +
                 ", age=" + age +
                 ", course=" + course +
+                ", sex=" + sex +
                 ", avgGrade=" + avgGrade +
                 '}';
     }
