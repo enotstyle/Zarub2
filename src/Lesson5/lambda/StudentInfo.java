@@ -3,6 +3,8 @@ package Lesson5.lambda;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
 
 public class StudentInfo {
 
@@ -29,23 +31,23 @@ class Test {
         students.add(st3);
         students.add(st4);
         students.add(st5);
-        StudentInfo info = new StudentInfo();
-        info.testStudents(students, new CheckOverGrade());
+        StudentInfo2 info = new StudentInfo2();
+//        info.testStudents2(students, new CheckOverGrade2());
         System.out.println("-------------------------");
-        info.testStudents(students, new StudentChecks() {
-            @Override
-            public boolean check(Student s) {
-                return s.age < 30;
-            }
-        });
+//        info.testStudents(students, new StudentChecks() {
+//            @Override
+//            public boolean check(Student s) {
+//                return s.age < 30;
+//            }
+//        });
         System.out.println("-------------------------");
-        info.testStudents(students, (Student s) -> s.age < 30);
-        System.out.println("-------------------------");
-        info.testStudents(students, (Student s) -> s.avgGrade > 8);
-        System.out.println("-------------------------");
-        info.testStudents(students, (Student s) -> s.age < 30 && s.avgGrade > 5);
-        System.out.println("-------------------------");
-        info.testStudents(students, s -> s.age < 30);
+//        info.testStudents(students, (Student s) -> s.age < 30);
+//        System.out.println("-------------------------");
+//        info.testStudents(students, (Student s) -> s.avgGrade > 8);
+//        System.out.println("-------------------------");
+//        info.testStudents(students, (Student s) -> s.age < 30 && s.avgGrade > 5);
+//        System.out.println("-------------------------");
+//        info.testStudents(students, s -> s.age < 30);
         System.out.println("-------------------------");
         StudentChecks sc = s -> s.age < 30;
         System.out.println(sc.check(st3));
@@ -60,6 +62,17 @@ class Test {
         Collections.shuffle(students);
         Collections.sort(students, (Student s1, Student s2) -> s1.name.compareTo(s2.name));
         System.out.println(students);
+
+        Function<Student, Double> f = s -> s.avgGrade;
+        System.out.println(avgSmth(students, s -> s.avgGrade / students.size()));
+    }
+
+    private static double avgSmth(List<Student> list, Function<Student, Double> f) {
+        double result = 0;
+        for (Student s : list) {
+            result += f.apply(s);
+        }
+        return result;
     }
 }
 
