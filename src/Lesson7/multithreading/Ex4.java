@@ -1,4 +1,4 @@
-package Lesson7.Multithreading;
+package Lesson7.multithreading;
 
 public class Ex4 {
     public static void main(String[] args) {

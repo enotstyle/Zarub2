@@ -1,4 +1,4 @@
-package Lesson7.Multithreading;
+package Lesson7.multithreading;
 
 public class Ex7 {
     public static void main(String[] args) throws InterruptedException {
