@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Arrays;
 
 public class ChannelBufferEx1 {
     public static void main(String[] args) {
@@ -32,6 +33,16 @@ public class ChannelBufferEx1 {
             }
 
             System.out.println(stix);
+
+            String text = "\nЯ иду шагаю по Москве.";
+//            ByteBuffer buffer2 = ByteBuffer.allocate(text.getBytes().length);
+//            buffer2.put(text.getBytes());
+//            buffer2.flip();
+//            fileChannel.write(buffer2);
+
+            ByteBuffer buffer2 = ByteBuffer.wrap(text.getBytes()); //сразу создаем и записываем в буфер строку
+            fileChannel.write(buffer2);
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
